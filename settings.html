@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="settings.css">
+</head>
+<body>
+    <h1>Settings</h1>
+    <form id="settingsForm">
+        <label for="dailyGoal">Daily Water Goal (ml):</label>
+        <input type="number" id="dailyGoal" name="dailyGoal" min="0" step="100">
+
+        <label for="perClick">Water per Click (ml):</label>
+        <input type="number" id="perClick" name="perClick" min="0" step="100">
+
+        <label for="reminderInterval">Reminder Interval (minutes):</label>
+        <input type="number" id="reminderInterval" name="reminderInterval" min="0" step="1">
+
+        <button type="submit">Save Settings</button>
+    </form>
+
+    <script type="module" src="./dist/settings_renderer.js"></script>
+</body>
+</html>

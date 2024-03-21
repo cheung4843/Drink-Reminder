@@ -1,0 +1,30 @@
+/* body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+} */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  #currentWater, #targetWater {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  #drinkWaterButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
