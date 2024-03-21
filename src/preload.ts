@@ -31,5 +31,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // 由 settings_renderer.ts 呼叫 updateWaterDataFromSettings，
   // 再由 main.ts 呼叫 mainWindow.webContents.send('update-water-data')，
   // 最後由 renderer.ts 藉由 onUpdateWaterData 來接收，callback 是 DrinkingHelper 的 updateWaterData 方法
-  onUpdateWaterData: (callback: Function) => ipcRenderer.on('update-water-data', () => callback())
+  onUpdateWaterData: (callback: Function) => ipcRenderer.on('update-water-data', () => callback()),
+  notify: (title: string, message: string) => ipcRenderer.send('notify', title, message),
 });

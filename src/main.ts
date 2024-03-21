@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, Notification } from "electron";
 import * as path from "path";
 import { Store } from './store';
 
@@ -7,6 +7,7 @@ let userDrinkingData: Store;
 
 let mainWindow: BrowserWindow;
 let settingsWindow: BrowserWindow;
+
 
 function createWindow() {
   // Create the browser window.
@@ -29,13 +30,15 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+
+
 app.whenReady().then(() => {
   createWindow();
   userSettings = new Store('user-settings');
   // 預設值: {"dailyGoal":"2000","perClick":"500","reminderInterval":"30"}
   userSettings.set('dailyGoal', 2000);
   userSettings.set('perClick', 500);
-  userSettings.set('reminderInterval', 30);
+  userSettings.set('reminderInterval', 0.2);
   // userSettings.set('IsUsedCustomSettings', false);
   userDrinkingData = new Store('user-drinking-data');
   // 預設值
@@ -113,4 +116,13 @@ ipcMain.handle('update-water-data-from-settings', async (event) => {
   mainWindow.webContents.send('update-water-data');
   // 更新 index.html 上的顯示資訊
   return 'Water data updated';
+});
+
+ipcMain.on('notify', async (event, title, message) => {
+  // notifier.notify({
+  //   title: title,
+  //   message: message,
+  // });
+  new Notification({ title: title, body: message }).show();
+
 });
