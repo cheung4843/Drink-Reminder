@@ -87,6 +87,8 @@ class DrinkReminder {
         this.updateTimeDisplay();
         if (this.secsToCountDown <= 0) {
             window.electronAPI.notify('喝水時間到', '該喝水了');
+            // 重置倒數計時，並更新提醒間隔
+            this.reminderInterval = await window.electronAPI.getSettingsValue('reminderInterval') as number;
             this.secsToCountDown = this.reminderInterval * 60;
         }
     }
